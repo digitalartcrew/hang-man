@@ -1,0 +1,15 @@
+{
+  "name": "hangman-linkedin",
+  "version": "1.0.0",
+  "description": "\"Hangman game built for Linkedin interview\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Donte Burney",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express-session": "^1.15.1"
+  }
+}
