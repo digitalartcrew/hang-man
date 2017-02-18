@@ -1,0 +1,11 @@
+#hangman {
+	height: 500px;
+	width: 300px;
+	background-color: red;
+}
+
+#guessbox {
+	height: 500px;
+	width: 300px;
+	background-color: green
+}
