@@ -52,18 +52,19 @@ $('document').ready(function(){
         ctx.stroke();
     } 
 
-    //rope
-    function rope(){
+    //stand
+    function stand(){
         ctx.beginPath();
         ctx.moveTo(x, y - 110);
         ctx.lineTo(x, y - 50);
         ctx.moveTo(x, y - 110);
         ctx.lineTo(x - 200, y - 110);
-        ctx.moveTo(10, y - 110);
-        ctx.lineTo(10, y + 200)
+        ctx.moveTo(x-200, y - 110);
+        ctx.lineTo(x-200, y + 240);
+        ctx.moveTo(x-160, y + 240);
+        ctx.lineTo(x-240, y +240);
         ctx.stroke();
     }
-
 
     displayhead();
     displaybody();
@@ -71,9 +72,7 @@ $('document').ready(function(){
     rightarm();
     leftleg();
     rightleg();
-    rope();
-
-
+    stand();
 
 
 })
