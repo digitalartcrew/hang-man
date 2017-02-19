@@ -1,17 +1,43 @@
 $('document').ready(function(){
 
+	var x = 75;
+	//head
 	var canvas = document.getElementById('hangman');
-  if (canvas.getContext) {
-     var ctx = canvas.getContext('2d');
-
+    var ctx = canvas.getContext('2d');
     ctx.beginPath();
-    ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
-    ctx.moveTo(110, 75);
-    ctx.arc(75, 75, 35, 0, Math.PI, false);  // Mouth (clockwise)
-    ctx.moveTo(65, 65);
-    ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
-    ctx.moveTo(95, 65);
-    ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+    ctx.arc(x, 75, 50, 0, Math.PI * 2, true); // Outer circle
     ctx.stroke();
-  }
+
+    // body
+    ctx.beginPath();
+    ctx.moveTo(x, 125);
+    ctx.lineTo(x, 250);
+    ctx.stroke();
+
+    //left arm
+    ctx.beginPath();
+    ctx.moveTo(x, 150);
+    ctx.lineTo(30, 160);
+    ctx.stroke();
+
+     //left arm
+    ctx.beginPath();
+    ctx.moveTo(x, 150);
+    ctx.lineTo(125, 160);
+    ctx.stroke();
+
+      //left leg
+    ctx.beginPath();
+    ctx.moveTo(x, 250);
+    ctx.lineTo(30, 300);
+    ctx.stroke();
+
+     //left leg
+    ctx.beginPath();
+    ctx.moveTo(x, 250);
+    ctx.lineTo(125, 300);
+    ctx.stroke();
+
+
+
 })
