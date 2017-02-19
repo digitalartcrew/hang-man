@@ -1,42 +1,78 @@
 $('document').ready(function(){
 
-	var x = 75;
+	var x = 400;
+    var y = 120;
 	//head
 	var canvas = document.getElementById('hangman');
     var ctx = canvas.getContext('2d');
-    ctx.beginPath();
-    ctx.arc(x, 75, 50, 0, Math.PI * 2, true); // Outer circle
-    ctx.stroke();
+
+    function displayhead(){
+        ctx.beginPath();
+        ctx.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
+        ctx.stroke();
+    }
 
     // body
-    ctx.beginPath();
-    ctx.moveTo(x, 125);
-    ctx.lineTo(x, 250);
-    ctx.stroke();
+    function displaybody(){
+        ctx.beginPath();
+        ctx.moveTo(x, y + 50);
+        ctx.lineTo(x, y + 175);
+        ctx.stroke();
+    }
 
     //left arm
-    ctx.beginPath();
-    ctx.moveTo(x, 150);
-    ctx.lineTo(30, 160);
-    ctx.stroke();
+    function leftarm(){ 
+        ctx.beginPath();
+        ctx.moveTo(x, y + 75);
+        ctx.lineTo(x - 45, y + 85);
+        ctx.stroke();
+    }
 
-     //left arm
-    ctx.beginPath();
-    ctx.moveTo(x, 150);
-    ctx.lineTo(125, 160);
-    ctx.stroke();
+     //right arm
+    function rightarm(){
+        ctx.beginPath();
+        ctx.moveTo(x, y + 75);
+        ctx.lineTo(x + 50, y + 85);
+        ctx.stroke(); 
+     }
 
       //left leg
-    ctx.beginPath();
-    ctx.moveTo(x, 250);
-    ctx.lineTo(30, 300);
-    ctx.stroke();
+    function leftleg(){
+        ctx.beginPath();
+        ctx.moveTo(x, y + 175);
+        ctx.lineTo(x - 40, y + 225);
+        ctx.stroke();
+    }
 
-     //left leg
-    ctx.beginPath();
-    ctx.moveTo(x, 250);
-    ctx.lineTo(125, 300);
-    ctx.stroke();
+     //right leg
+    function rightleg(){
+        ctx.beginPath();
+        ctx.moveTo(x, y + 175);
+        ctx.lineTo(x + 50, y + 225);
+        ctx.stroke();
+    } 
+
+    //rope
+    function rope(){
+        ctx.beginPath();
+        ctx.moveTo(x, y - 110);
+        ctx.lineTo(x, y - 50);
+        ctx.moveTo(x, y - 110);
+        ctx.lineTo(x - 200, y - 110);
+        ctx.moveTo(10, y - 110);
+        ctx.lineTo(10, y + 200)
+        ctx.stroke();
+    }
+
+
+    displayhead();
+    displaybody();
+    leftarm();
+    rightarm();
+    leftleg();
+    rightleg();
+    rope();
+
 
 
 
