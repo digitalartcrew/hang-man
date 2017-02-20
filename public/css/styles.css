@@ -9,3 +9,15 @@
 #game {
 	margin-top: 50px;
 }
+
+.letter {
+	height: 50px;
+	width: 50px;
+	border-radius: 2px;
+	background-color: yellow;
+	margin: 5px;
+}
+
+.letter:hover{
+	background-color: green;
+}

@@ -1,9 +1,15 @@
 $('document').ready(function(){
 
 
-        
+        // function guessLetter(){
 
-        var wordify = function (list){
+        // }
+
+       $('.letter').click(function(){
+            console.log(this.innerHTML.toLowerCase());
+       })
+
+        function wordify(list){
                words = list.split('\n');
                 listSize = words.length;
                 randomNum = Math.floor((Math.random() * listSize) + 0);
