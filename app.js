@@ -27,7 +27,6 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride('_method'));
 
 
-
-app.listen(process.env.PORT || 3000, function(req,res){
-  console.log("App running on localost 3000");
+app.listen(process.env.PORT || 3001, function(req,res){
+  console.log("App running on localost 3001");
 });

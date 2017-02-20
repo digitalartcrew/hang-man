@@ -3,5 +3,9 @@
 }
 
 #guessbox {
-	background-color: green
+	font-size: 50px;
+}
+
+#game {
+	margin-top: 50px;
 }

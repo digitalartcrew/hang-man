@@ -1,5 +1,15 @@
 $('document').ready(function(){
 
+    var hangman = function(){
+        return {
+            displayhead: function(){
+                ctx.beginPath();
+                ctx.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
+                ctx.stroke();
+            },
+        }
+    }
+
 	var x = 400;
     var y = 120;
 	//head
