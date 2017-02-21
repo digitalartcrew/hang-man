@@ -6,69 +6,83 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-	  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
 
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-<nav></nav>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Hangman Challenge</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">Rules</a></li>
+    </ul>
+    <button class="btn btn-danger navbar-btn" id="newgame"> New Game</button>
+  </div>
+</nav>
 <header></header>
 <div class="container">
 	<section id="players">
 		<div class="row">
-		<div class="col-md-6">Player 1 <span>Score</span></div>
-		<div class="col-md-6">Computer <span>Score</span></div>
+		<div class="col-xs-6"> <button class="btn btn-success navbar-btn">Player <span>0</span></span></button><span id="user"></span></div>
+		<div class="col-xs-6"> <button class="btn btn-success navbar-btn">Computer <span>0</span></button><span id="computer"></span></div>
 	</div>
 	</section>
 	<section id="game">
-		<div class="col-md-6">
+		<div class="col-xs-12">
+			<div class="row">
+			<div class="col-xs-6">
 		<p id="guessbox"></p>
-		<!-- 	<canvas id=""></canvas> -->
 		</div>
-		<div class="col-md-6">
+		<div class="col-xs-6">
 			<canvas id="hangman" width="600" height="400"></canvas>
 		</div>
+				
+			</div>
+		</div>
+		
 	</section>
 	<section id="letters">
+	<div class="col-xs-12">
 		<div class="row">
-			<div class="col-md-1 letter">A</div>
-			<div class="col-md-1 letter">B</div>
-			<div class="col-md-1 letter">C</div>
-			<div class="col-md-1 letter">D</div>
-			<div class="col-md-1 letter">E</div>
-			<div class="col-md-1 letter">F</div>
-			<div class="col-md-1 letter">G</div>
-			<div class="col-md-1 letter">H</div>
-			<div class="col-md-1 letter">I</div>
-			<div class="col-md-1 letter">J</div>
-			<div class="col-md-1 letter">K</div>
-			<div class="col-md-1 letter">L</div>
+			<div class="col-xs-1 letter">A</div>
+			<div class="col-xs-1 letter">B</div>
+			<div class="col-xs-1 letter">C</div>
+			<div class="col-xs-1 letter">D</div>
+			<div class="col-xs-1 letter">E</div>
+			<div class="col-xs-1 letter">F</div>
+			<div class="col-xs-1 letter">G</div>
+			<div class="col-xs-1 letter">H</div>
+			<div class="col-xs-1 letter">I</div>
+			<div class="col-xs-1 letter">J</div>
+			<div class="col-xs-1 letter">K</div>
+			<div class="col-xs-1 letter">L</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-1 letter">M</div>
-			<div class="col-md-1 letter">N</div>
-			<div class="col-md-1 letter">O</div>
-			<div class="col-md-1 letter">P</div>
-			<div class="col-md-1 letter">Q</div>
-			<div class="col-md-1 letter">R</div>
-			<div class="col-md-1 letter">S</div>
-			<div class="col-md-1 letter">T</div>
-			<div class="col-md-1 letter">U</div>
-			<div class="col-md-1 letter">V</div>
-			<div class="col-md-1 letter">W</div>
-			<div class="col-md-1 letter">X</div>
+			<div class="col-xs-1 letter">M</div>
+			<div class="col-xs-1 letter">N</div>
+			<div class="col-xs-1 letter">O</div>
+			<div class="col-xs-1 letter">P</div>
+			<div class="col-xs-1 letter">Q</div>
+			<div class="col-xs-1 letter">R</div>
+			<div class="col-xs-1 letter">S</div>
+			<div class="col-xs-1 letter">T</div>
+			<div class="col-xs-1 letter">U</div>
+			<div class="col-xs-1 letter">V</div>
+			<div class="col-xs-1 letter">W</div>
+			<div class="col-xs-1 letter">X</div>
 		</div>
 
 		<div class="row">
-			<div class="col-md-1 letter">Y</div>
-			<div class="col-md-1 letter">Z</div>
+			<div class="col-xs-1 letter">Y</div>
+			<div class="col-xs-1 letter">Z</div>
+		</div>
 		</div>
 	</section>
 	<section id="game-controls"></section>

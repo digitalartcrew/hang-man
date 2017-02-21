@@ -19,5 +19,9 @@
 }
 
 .letter:hover{
-	background-color: green;
+	background-color: grey;
+}
+
+.letter:visited {
+	background-color: red;
 }
