@@ -74,12 +74,13 @@ $('document').ready(function(){
         var missedLetters = [];
         var showLetters = "";
 
+        //Initial Start Screen
         document.getElementById('displaymessage').innerHTML = "Click the New Game Button to begin..."
+        document.getElementById('remaining').innerHTML = '-';
 
-
-        document.getElementById('remaining').innerHTML = guessCount;
         //start a new game
         $('#newgame').click(function(){
+            document.getElementById('remaining').innerHTML = guessCount;
             document.getElementById('displaymessage').innerHTML = "Missed Letters"
             localStorage.clear();
             requestSecret();
@@ -93,11 +94,17 @@ $('document').ready(function(){
             var secret = localStorage.answer;
             var i = secret.indexOf(guess);
             //check to see if the letter exists
+
             if(secret.indexOf(guess) > -1){
                 console.log("Guess = " + guess);
                 console.log("Index = " + secret.indexOf(guess));
                 console.log("Current Display:" + showLetters[0]);
-                showLetters[i] = guess;
+                
+                while(i >= 0){
+                    console.log("Dups" + i);
+                    showLetters[i] = guess;
+                    i = secret.indexOf(guess, i + 1);
+                };
                 console.log("Updated:" + showLetters);
                 console.log('Yes');
             } else {
@@ -120,8 +127,6 @@ $('document').ready(function(){
                 };
             }
         });
-
-
 
 
         function secretify(list){
