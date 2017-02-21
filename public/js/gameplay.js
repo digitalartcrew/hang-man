@@ -72,6 +72,7 @@ $('document').ready(function(){
 
         var guessCount = 6;
         var missedLetters = [];
+        var showLetters = "";
 
         document.getElementById('displaymessage').innerHTML = "Click the New Game Button to begin..."
 
@@ -93,6 +94,11 @@ $('document').ready(function(){
             var i = secret.indexOf(guess);
             //check to see if the letter exists
             if(secret.indexOf(guess) > -1){
+                console.log("Guess = " + guess);
+                console.log("Index = " + secret.indexOf(guess));
+                console.log("Current Display:" + showLetters[0]);
+                showLetters[i] = guess;
+                console.log("Updated:" + showLetters);
                 console.log('Yes');
             } else {
                 missedLetters.push(guess);
@@ -112,35 +118,23 @@ $('document').ready(function(){
                     rightleg();
                     document.getElementById('results').innerHTML = "Sorry, you lose."
                 };
-             
-            
             }
-
-
-
         });
 
 
 
 
         function secretify(list){
-                //Create an array from list of secrets
                 secrets = list.split('\n');
-                //Access the length of list to randomly select an index
                 listSize = secrets.length;
-                //Randomly select an index
                 randomNum = Math.floor((Math.random() * listSize) + 0);
-                //Accress random secret
                 newScret = secrets[randomNum];
-                //creates space that can be updated in local storage
                 showLetters = newScret.split('').map(function(x){
                     return '-'
                 });
-                //display space on the page
-                document.getElementById('guessbox').innerHTML = showLetters.join('');
-                //Store new secret in local storage to check  
+
+                document.getElementById('guessbox').innerHTML = showLetters.join(''); 
                 localStorage.setItem("answer",newScret);
-                //Store spaces to be updated
                 localStorage.setItem("guessedLetters",showLetters);
             }
 
