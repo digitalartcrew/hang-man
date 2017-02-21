@@ -1,34 +1,12 @@
 $('document').ready(function(){
 
-        function Player(name,turn,score){
-            this.name = name;
-            this.score = score;
-            this.turn = false;
-
-        }
-
-        var computer = new Player("Computer",false,0);
-        var user = new Player("User",false,0);
-
+        //start a new game
         $('#newgame').click(function(){
             localStorage.clear();
             startGame();
             requestWord();
         });
 
-        function startGame(){
-            var flip = Math.random();
-
-            if(flip > 0.5){
-                computer.turn = true;
-                document.getElementById('user').innerHTML =" "
-                document.getElementById('computer').innerHTML =" Current User"
-            } else {
-                user.turn = true;
-                document.getElementById('computer').innerHTML =" "
-                document.getElementById('user').innerHTML =" Current User"
-            }
-        };
 
 
        $('.letter').click(function(){
