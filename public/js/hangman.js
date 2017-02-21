@@ -76,12 +76,12 @@ $('document').ready(function(){
         ctx.stroke();
     }
 
-    displayhead();
-    displaybody();
-    leftarm();
-    rightarm();
-    leftleg();
-    rightleg();
+    // displayhead();
+    // displaybody();
+    // leftarm();
+    // rightarm();
+    // leftleg();
+    // rightleg();
     stand();
 
 

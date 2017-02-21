@@ -1,28 +1,36 @@
 $('document').ready(function(){
 
+        var guessCount = 6;
+        var missedLetters = [];
+
+
+        document.getElementById('remaining').innerHTML = guessCount;
         //start a new game
         $('#newgame').click(function(){
             localStorage.clear();
             requestSecret();
+            console.log(localStorage);
         });
 
 
 
        $('.letter').click(function(){
-            //Use count to count the number of guesses
-            var count = 0;
-            //Record the guessed answer
             var guess = this.innerHTML.toLowerCase();
-            //Access the secret to check if letters exists
             var secret = localStorage.answer;
-            //Access the index of correct guess
             var i = secret.indexOf(guess);
+           
             //check to see if the letter exists
+
             if(secret.indexOf(guess) > -1){
+
                 console.log('Yes');
             } else {
-                console.log('No');
-                count++
+                missedLetters.push(guess);
+                document.getElementById('missed').innerHTML = missedLetters;
+                guessCount--;
+                if(guessCount === 0){
+                    document.getElementById('results').innerHTML = "Sorry, you lose."
+                }
             }
   
         
