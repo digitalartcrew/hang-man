@@ -3,18 +3,19 @@ $('document').ready(function(){
     //Hangman begins
     var x = 400;
     var y = 120;
-    //head
+    
     var canvas = document.getElementById('hangman');
     var ctx = canvas.getContext('2d');
 
-    function displayhead(){
+    //head
+    var head = function displayhead(){
         ctx.beginPath();
         ctx.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
     }
 
     // body
-    function displaybody(){
+    var bdy = function displaybody(){
         ctx.beginPath();
         ctx.moveTo(x, y + 50);
         ctx.lineTo(x, y + 175);
@@ -22,7 +23,7 @@ $('document').ready(function(){
     }
 
     //left arm
-    function leftarm(){ 
+    var la = function leftarm(){ 
         ctx.beginPath();
         ctx.moveTo(x, y + 75);
         ctx.lineTo(x - 45, y + 85);
@@ -30,7 +31,7 @@ $('document').ready(function(){
     }
 
      //right arm
-     function rightarm(){
+     var ra = function rightarm(){
         ctx.beginPath();
         ctx.moveTo(x, y + 75);
         ctx.lineTo(x + 50, y + 85);
@@ -38,7 +39,7 @@ $('document').ready(function(){
     }
 
       //left leg
-      function leftleg(){
+      var ll = function leftleg(){
         ctx.beginPath();
         ctx.moveTo(x, y + 175);
         ctx.lineTo(x - 40, y + 225);
@@ -46,7 +47,7 @@ $('document').ready(function(){
     }
 
      //right leg
-     function rightleg(){
+     var rl = function rightleg(){
         ctx.beginPath();
         ctx.moveTo(x, y + 175);
         ctx.lineTo(x + 50, y + 225);
@@ -54,7 +55,7 @@ $('document').ready(function(){
     } 
 
     //stand
-    function stand(){
+    var s = function stand(){
         ctx.beginPath();
         ctx.moveTo(x, y - 110);
         ctx.lineTo(x, y - 50);
@@ -67,24 +68,26 @@ $('document').ready(function(){
         ctx.stroke();
     }
 
-    stand();
+    s();
         //Hangman ends
 
-        var guessCount = 6;
+        var guessCount = '-';
         var missedLetters = [];
         var showLetters = "";
 
         //Initial Start Screen
         document.getElementById('displaymessage').innerHTML = "Click the New Game Button to begin..."
-        document.getElementById('remaining').innerHTML = '-';
+        document.getElementById('remaining').innerHTML = guessCount;
 
         //start a new game
-        $('#newgame').click(function(){
-            document.getElementById('remaining').innerHTML = guessCount;
-            document.getElementById('displaymessage').innerHTML = "Missed Letters"
+        document.getElementById('newgame').addEventListener("click", function(){
             localStorage.clear();
             requestSecret();
-            console.log(localStorage);
+            guessCount = 6;
+            document.getElementById('remaining').innerHTML = guessCount;
+            document.getElementById('displaymessage').innerHTML = "Missed Letters";
+            document.getElementById('results').innerHTML = "";
+            document.getElementById('missed').innerHTML = [];
         });
 
 
@@ -93,7 +96,7 @@ $('document').ready(function(){
             var guess = this.innerHTML.toLowerCase();
             var secret = localStorage.answer;
             var i = secret.indexOf(guess);
-            //check to see if the letter exists
+            
 
             if(secret.indexOf(guess) > -1){
                 console.log("Guess = " + guess);
@@ -104,25 +107,35 @@ $('document').ready(function(){
                     console.log("Dups" + i);
                     showLetters[i] = guess;
                     i = secret.indexOf(guess, i + 1);
+                    console.log(showLetters.join(''));
+                    document.getElementById('guessbox').innerHTML = showLetters.join('');
                 };
+
+                if (secret == showLetters.join('')) {
+                    document.getElementById('results').innerHTML = "You win!";
+                } else {
+                    console.log("Not yet!");
+                }
+
                 console.log("Updated:" + showLetters);
                 console.log('Yes');
             } else {
+                guessCount -= 1;
                 missedLetters.push(guess);
+                document.getElementById('remaining').innerHTML = guessCount;
                 document.getElementById('missed').innerHTML = missedLetters;
-                guessCount--;
                 if(guessCount === 5){
-                    displayhead();
+                    head();
                 } else if(guessCount === 4){
-                    displaybody();
+                    bdy();
                 } else if(guessCount === 3){
-                    leftarm();
+                    la();
                 } else if (guessCount === 2) {
-                    rightarm();
+                    ra();
                 } else if (guessCount === 1) {
-                    leftleg();
-                } else if (guessCount === 0){
-                    rightleg();
+                    ll();
+                } else if (guessCount <= 0){
+                    rl();
                     document.getElementById('results').innerHTML = "Sorry, you lose."
                 };
             }
