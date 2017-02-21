@@ -94,11 +94,23 @@ $('document').ready(function(){
             } else {
                 missedLetters.push(guess);
                 document.getElementById('missed').innerHTML = missedLetters;
-                displayhead();
                 guessCount--;
-                if(guessCount === 0){
+                if(guessCount === 5){
+                    displayhead();
+                } else if(guessCount === 4){
+                    displaybody();
+                } else if(guessCount === 3){
+                    leftarm();
+                } else if (guessCount === 2) {
+                    rightarm();
+                } else if (guessCount === 1) {
+                    leftleg();
+                } else if (guessCount === 0){
+                    rightleg();
                     document.getElementById('results').innerHTML = "Sorry, you lose."
-                }
+                };
+             
+            
             }
 
 
