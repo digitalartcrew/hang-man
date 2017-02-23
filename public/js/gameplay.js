@@ -7,55 +7,47 @@ $('document').ready(function(){
     var canvas = document.getElementById('hangman');
     var ctx = canvas.getContext('2d');
 
-    //head
-    var head = function displayhead(){
+    var hangman = {
+     head: function displayhead(){
         ctx.beginPath();
         ctx.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
         ctx.stroke();
-    }
-
-    // body
-    var bdy = function displaybody(){
+        },
+     body: function (){
         ctx.beginPath();
         ctx.moveTo(x, y + 50);
         ctx.lineTo(x, y + 175);
         ctx.stroke();
-    }
-
-    //left arm
-    var la = function leftarm(){ 
+        },
+     leftarm: function (){ 
         ctx.beginPath();
         ctx.moveTo(x, y + 75);
         ctx.lineTo(x - 45, y + 85);
         ctx.stroke();
-    }
-
-     //right arm
-     var ra = function rightarm(){
+        },
+    rightarm: function (){
         ctx.beginPath();
         ctx.moveTo(x, y + 75);
         ctx.lineTo(x + 50, y + 85);
         ctx.stroke(); 
-    }
-
-      //left leg
-      var ll = function leftleg(){
+        },
+    leftleg: function (){
         ctx.beginPath();
         ctx.moveTo(x, y + 175);
         ctx.lineTo(x - 40, y + 225);
         ctx.stroke();
-    }
-
-     //right leg
-     var rl = function rightleg(){
+        },
+      rightleg: function (){
         ctx.beginPath();
         ctx.moveTo(x, y + 175);
         ctx.lineTo(x + 50, y + 225);
         ctx.stroke();
-    } 
+        } 
+    };
+
 
     //stand
-    var s = function stand(){
+    function stand(){
         ctx.beginPath();
         ctx.moveTo(x, y - 110);
         ctx.lineTo(x, y - 50);
@@ -68,8 +60,8 @@ $('document').ready(function(){
         ctx.stroke();
     }
 
-    s();
-        //Hangman ends
+    stand();
+
 
         var guessCount = '-';
         var missedLetters = [];
@@ -125,17 +117,17 @@ $('document').ready(function(){
                 document.getElementById('remaining').innerHTML = guessCount;
                 document.getElementById('missed').innerHTML = missedLetters;
                 if(guessCount === 5){
-                    head();
+                    hangman.head();
                 } else if(guessCount === 4){
-                    bdy();
+                    hangman.body();
                 } else if(guessCount === 3){
-                    la();
+                    hangman.leftarm();
                 } else if (guessCount === 2) {
-                    ra();
+                    hangman.rightarm();
                 } else if (guessCount === 1) {
-                    ll();
+                    hangman.leftleg();
                 } else if (guessCount <= 0){
-                    rl();
+                    hangman.rightleg();
                     document.getElementById('results').innerHTML = "Sorry, you lose."
                 };
             }
