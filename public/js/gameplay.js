@@ -72,9 +72,11 @@ $('document').ready(function(){
     document.getElementById('remaining').innerHTML = guessCount;
 
     //start a new game
-    document.getElementById('newgame').addEventListener("click", function(){      
+    document.getElementById('newgame').addEventListener("click", function(){ 
+        localStorage.clear();     
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stand();
+        missedLetters = [];
         localStorage.clear();
         requestSecret();
         guessCount = 6;
@@ -137,8 +139,6 @@ $('document').ready(function(){
     });
 
 
-
-
     function secretify(list){
             secrets = list.split('\n');
             listSize = secrets.length;
@@ -159,7 +159,6 @@ $('document').ready(function(){
                 datatype: 'jsonp', 
                 url:"https://linkedin-words.herokuapp.com/words", 
                 success: function(res){
-                   localStorage.clear();
                    secretify(res);
                }, 
                failure: function(err){
