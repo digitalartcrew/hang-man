@@ -67,6 +67,18 @@ $('document').ready(function(){
     var missedLetters = [];
     var showLetters = "";
 
+    // var game = {
+    //     guessCount: function(){
+    //         return '-';
+    //     },
+    //     missed: function(){
+    //         return [];
+    //     },
+    //     show: function(){
+    //         return "",
+    //     }
+    // }
+
     //Initial Start Screen
     document.getElementById('displaymessage').innerHTML = "Click the New Game Button to begin..."
     document.getElementById('remaining').innerHTML = guessCount;
@@ -77,7 +89,7 @@ $('document').ready(function(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stand();
         missedLetters = [];
-        localStorage.clear();
+        // localStorage.clear();
         requestSecret();
         guessCount = 6;
         document.getElementById('remaining').innerHTML = guessCount;
@@ -95,15 +107,15 @@ $('document').ready(function(){
         
 
         if(secret.indexOf(guess) > -1){
-            console.log("Guess = " + guess);
-            console.log("Index = " + secret.indexOf(guess));
-            console.log("Current Display:" + showLetters[0]);
+            // console.log("Guess = " + guess);
+            // console.log("Index = " + secret.indexOf(guess));
+            // console.log("Current Display:" + showLetters[0]);
             
             while(i >= 0){
-                console.log("Dups" + i);
+                // console.log("Dups" + i);
                 showLetters[i] = guess;
                 i = secret.indexOf(guess, i + 1);
-                console.log(showLetters.join(''));
+                // console.log(showLetters.join(''));
                 document.getElementById('guessbox').innerHTML = showLetters.join('');
             };
 
@@ -116,7 +128,7 @@ $('document').ready(function(){
             console.log("Updated:" + showLetters);
             console.log('Yes');
         } else {
-            guessCount -= 1;
+            guessCount--;
             missedLetters.push(guess);
             document.getElementById('remaining').innerHTML = guessCount;
             document.getElementById('missed').innerHTML = missedLetters;
@@ -133,6 +145,7 @@ $('document').ready(function(){
             } else if (guessCount <= 0){
                 hangman.rightleg();
                 document.getElementById('results').innerHTML = "Sorry, you lose.";
+                //display answer
             
             };
         }
