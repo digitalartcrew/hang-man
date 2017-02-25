@@ -85,19 +85,23 @@ $('document').ready(function(){
 
     //start a new game
     document.getElementById('newgame').addEventListener("click", function(){ 
-        localStorage.clear();     
+        // localStorage.clear();     
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stand();
         missedLetters = [];
-        // localStorage.clear();
-        requestSecret();
+        var level = document.getElementById('difficulty').value
+        if(!localStorage["dictionary_" + level]){
+                requestSecret(level);
+        } else {
+            secretify(localStorage["dictionary_" + level]);
+        };
+        
         guessCount = 6;
         document.getElementById('remaining').innerHTML = guessCount;
         document.getElementById('displaymessage').innerHTML = "Missed Letters";
         document.getElementById('results').innerHTML = "";
         document.getElementById('missed').innerHTML = [];
     });
-
 
 
     $('.letter').click(function(){
@@ -145,6 +149,9 @@ $('document').ready(function(){
             } else if (guessCount <= 0){
                 hangman.rightleg();
                 document.getElementById('results').innerHTML = "Sorry, you lose.";
+                $('#letters').css({display: "none"});
+                document.getElementById('guessbox').innerHTML = localStorage.answer;
+
                 //display answer
             
             };
@@ -164,14 +171,16 @@ $('document').ready(function(){
             document.getElementById('guessbox').innerHTML = showLetters.join(''); 
             localStorage.setItem("answer",newScret);
             localStorage.setItem("guessedLetters",showLetters);
+            // localStorage.setItem({},{});
         }
 
-        function requestSecret() {
+        function requestSecret(level) {
             $.ajax({
                 type: "GET",
                 datatype: 'jsonp', 
-                url:"https://linkedin-words.herokuapp.com/words", 
+                url:"https://linkedin-words.herokuapp.com/words/" + level, 
                 success: function(res){
+                    localStorage.setItem("dictionary_"+level,res);
                    secretify(res);
                }, 
                failure: function(err){
