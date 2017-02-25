@@ -95,7 +95,6 @@ $('document').ready(function(){
 
     $('#letters').css({display: "none"});
 
-
     $('.letter').click(function(){
         var guess = this.innerHTML.toLowerCase();
         var secret = localStorage.answer;
@@ -152,7 +151,6 @@ $('document').ready(function(){
             showLetters = newScret.split('').map(function(x){
                 return '-'
             });
-
             document.getElementById('guessbox').innerHTML = showLetters.join(''); 
             localStorage.setItem("answer",newScret);
             localStorage.setItem("guessedLetters",showLetters);

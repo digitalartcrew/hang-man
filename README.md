@@ -2,6 +2,8 @@
 
 The hangman challenge is a designed on a web site which allows a user to play hangman versus the computer. 
 
+# You can play this link at https://dontehangman.herokuapp.com/
+
 ## Getting Started
 
 1. git clone https://github.com/digitalartcrew/hang-man or unzip file.
@@ -23,7 +25,7 @@ The hangman challenge is a designed on a web site which allows a user to play ha
 * JavaScript
 
 
-## Authors
+## Author
 
 * **Donte Burney
 
