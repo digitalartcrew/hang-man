@@ -67,17 +67,6 @@ $('document').ready(function(){
     var missedLetters = [];
     var showLetters = "";
 
-    // var game = {
-    //     guessCount: function(){
-    //         return '-';
-    //     },
-    //     missed: function(){
-    //         return [];
-    //     },
-    //     show: function(){
-    //         return "",
-    //     }
-    // }
 
     //Initial Start Screen
     document.getElementById('displaymessage').innerHTML = "Click the New Game Button to begin..."
@@ -85,7 +74,8 @@ $('document').ready(function(){
 
     //start a new game
     document.getElementById('newgame').addEventListener("click", function(){ 
-        // localStorage.clear();     
+        // localStorage.clear();
+        $('#letters').css({display: "block"});     
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stand();
         missedLetters = [];
@@ -103,6 +93,8 @@ $('document').ready(function(){
         document.getElementById('missed').innerHTML = [];
     });
 
+    $('#letters').css({display: "none"});
+
 
     $('.letter').click(function(){
         var guess = this.innerHTML.toLowerCase();
@@ -111,15 +103,10 @@ $('document').ready(function(){
         
 
         if(secret.indexOf(guess) > -1){
-            // console.log("Guess = " + guess);
-            // console.log("Index = " + secret.indexOf(guess));
-            // console.log("Current Display:" + showLetters[0]);
-            
+           
             while(i >= 0){
-                // console.log("Dups" + i);
                 showLetters[i] = guess;
                 i = secret.indexOf(guess, i + 1);
-                // console.log(showLetters.join(''));
                 document.getElementById('guessbox').innerHTML = showLetters.join('');
             };
 
@@ -152,8 +139,6 @@ $('document').ready(function(){
                 $('#letters').css({display: "none"});
                 document.getElementById('guessbox').innerHTML = localStorage.answer;
 
-                //display answer
-            
             };
         }
     });
@@ -162,7 +147,7 @@ $('document').ready(function(){
     function secretify(list){
             secrets = list.split('\n');
             listSize = secrets.length;
-            randomNum = Math.floor((Math.random() * listSize) + 0);
+            randomNum = Math.floor((Math.random() * listSize) + 1);
             newScret = secrets[randomNum];
             showLetters = newScret.split('').map(function(x){
                 return '-'
@@ -171,7 +156,6 @@ $('document').ready(function(){
             document.getElementById('guessbox').innerHTML = showLetters.join(''); 
             localStorage.setItem("answer",newScret);
             localStorage.setItem("guessedLetters",showLetters);
-            // localStorage.setItem({},{});
         }
 
         function requestSecret(level) {
